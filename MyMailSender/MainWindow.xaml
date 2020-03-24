@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
-        xmlns:local="clr-namespace:MyMailSender"      
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:RAEDToolBar;assembly=RAEDToolBarTray"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -24,18 +24,8 @@
             <TabItem Header="Рассылка" ToolTip="Управление рассылкой">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
-                        <ToolBar Header="Отправители">
-                            <ComboBox Name ="sendersList" ItemsSource="{x:Static local:TestData.Senders}" SelectedIndex="0" DisplayMemberPath="Address" Width="180"
-                                ></ComboBox>
-                            <Button>
-                                <Image Height ="14" Source="Images\Add_color.png"></Image>
-                            </Button>
-                            <Button>
-                                <Image Height="14" Source="Images\Edit_color.png"></Image>
-                            </Button>
-                            <Button>
-                                <Image Height="14" Source="Images\Delete_color.png"></Image>
-                            </Button>
+                        <ToolBar>
+                            <uc:RAEDToolBarControl Name="MyToolBar"></uc:RAEDToolBarControl>
                         </ToolBar>
                         <ToolBar Header="Сервера" Band="1">
                             <ComboBox Name="serversList" Width="180" Margin="27,0,0,0"

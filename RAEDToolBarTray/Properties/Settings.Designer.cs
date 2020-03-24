@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RAEDToolBarTray.Properties
+namespace RAEDToolBar.Properties
 {
     
     

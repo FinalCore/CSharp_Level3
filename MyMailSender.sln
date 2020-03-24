@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{0C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib", "MailSender\MailSender.lib.csproj", "{7CEACA5F-19EB-446C-B5C7-60F49E73B744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAEDToolBarTray", "RAEDToolBarTray\RAEDToolBarTray.csproj", "{A8A9FE0E-D9D2-4E56-AA4D-5B00E1E81E1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAEDToolBar", "RAEDToolBarTray\RAEDToolBar.csproj", "{A8A9FE0E-D9D2-4E56-AA4D-5B00E1E81E1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

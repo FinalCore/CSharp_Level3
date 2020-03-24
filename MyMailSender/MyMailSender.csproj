@@ -100,6 +100,10 @@
       <Project>{7ceaca5f-19eb-446c-b5c7-60f49e73b744}</Project>
       <Name>MailSender.lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RAEDToolBarTray\RAEDToolBar.csproj">
+      <Project>{a8a9fe0e-d9d2-4e56-aa4d-5b00e1e81e1e}</Project>
+      <Name>RAEDToolBar</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Add_color.png" />

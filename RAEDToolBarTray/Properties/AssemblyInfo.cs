@@ -7,11 +7,11 @@ using System.Windows;
 // Общие сведения об этой сборке предоставляются следующим набором
 // атрибутов. Отредактируйте значения этих атрибутов, чтобы изменить
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("RAEDToolBarTray")]
+[assembly: AssemblyTitle("RAEDToolBar")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RAEDToolBarTray")]
+[assembly: AssemblyProduct("RAEDToolBar")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
