@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMailSender", "MyMailSende
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{0CF61F7B-DC8E-4142-A32B-53013D6C2F0E}"
 	ProjectSection(SolutionItems) = preProject
+		dbCreationReadme.txt = dbCreationReadme.txt
 		TestData.cs = TestData.cs
 	EndProjectSection
 EndProject
