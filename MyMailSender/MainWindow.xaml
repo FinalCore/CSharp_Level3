@@ -21,13 +21,12 @@
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Приложение работает..."></TextBlock>
         </StatusBar>
-        <TabControl DockPanel.Dock="Top">
+        <TabControl x:Name="tabControl" DockPanel.Dock="Top">
             <TabItem Header="Рассылка" ToolTip="Управление рассылкой">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar>
-                            <uc:RAEDToolBarControl Width="320"></uc:RAEDToolBarControl>
-
+                            <uc:RAEDToolBarControl Name="tbSenders" Width="320"></uc:RAEDToolBarControl>
                         </ToolBar>
                         <ToolBar Header="Сервера" Band="1">
                             <ComboBox Name="serversList" ItemsSource="{x:Static local:TestData.Servers}" SelectedIndex="0" Width="180" Margin="27,0,0,0"
@@ -43,7 +42,7 @@
                             </Button>
                         </ToolBar>                        
                         <ToolBar Header ="Перейти в планировщик" Band="0" Margin="10,0,0,0">
-                            <Button>
+                            <Button x:Name="btnGoToCalendar" Click="btnGotoCalendar_Click">
                                 <Image Height="14" Source="Images\Calendar_color.png"></Image>
                             </Button>
                         </ToolBar>                                     
@@ -59,10 +58,10 @@
                     </GroupBox>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Планировщик" ToolTip="Планирование времени рассылки">
+            <TabItem Name="Calendar" Header="Планировщик" ToolTip="Планирование времени рассылки">
                 <DockPanel>
                     <GroupBox Header="Задачи" DockPanel.Dock="Left" Width="500">
-                        <ListBox>
+                        <ListBox SelectionChanged="ListBox_SelectionChanged">
                             <ListBoxItem HorizontalContentAlignment="Stretch">
                                 <GroupBox Header="Задача1" >
                                     <StackPanel>
@@ -95,7 +94,39 @@
                         </StackPanel>
                     </GroupBox>
                 </DockPanel>
-            </TabItem>          
+            </TabItem>
+            <TabItem Header="Письма">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="150" MaxWidth="300" Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Список писем">
+                        <DockPanel>
+                            <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                                <Button Content="Добавить"/>
+                                <Button Content="Удалить"/>
+                            </UniformGrid>
+                            <ListBox>
+                                
+                            </ListBox>
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Header="Выбранное письмо" Grid.Column="1">
+                        <DockPanel>
+                            <GroupBox DockPanel.Dock="Top" Header="Тема письма">
+                                <TextBox Name="MailHeader" />
+                            </GroupBox>
+                            <GroupBox Header="Текст письма">
+                                <Grid>
+                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="MailBody"/>                             
+                                </Grid>
+                            </GroupBox>
+                        </DockPanel>
+                    </GroupBox>
+                    <GridSplitter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="4" Background="Transparent"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </DockPanel>
 

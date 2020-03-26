@@ -31,5 +31,12 @@ namespace MyMailSender
         {
 
         }
+
+        private void btnGotoCalendar_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedItem = Calendar;
+        }
+
+        
     }
 }
