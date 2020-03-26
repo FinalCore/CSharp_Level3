@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:RAEDToolBar;assembly=RAEDToolBarTray"
+        xmlns:local="clr-namespace:MyMailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -25,7 +26,9 @@
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar>
-                            <uc:RAEDToolBarControl Name="MyToolBar"></uc:RAEDToolBarControl>
+                            <uc:RAEDToolBarControl Name="MyToolBar">
+                                
+                            </uc:RAEDToolBarControl>
                         </ToolBar>
                         <ToolBar Header="Сервера" Band="1">
                             <ComboBox Name="serversList" Width="180" Margin="27,0,0,0"
@@ -61,11 +64,11 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Получатели писем" DockPanel.Dock="Top">
-                        <DataGrid Name="recepientsList"  AutoGenerateColumns="False">
+                        <DataGrid Name="recepientsList"  AutoGenerateColumns="False" ItemsSource="{x:Static local:Database.Recipients}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Width="40" ></DataGridTextColumn>
-                                <DataGridTextColumn Header="Имя" Width="200"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Адрес" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Имя" Width="200" Binding="{Binding Name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Email}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
