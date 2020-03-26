@@ -3,22 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RAEDToolBar"
+             
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="380">
-    <Grid>
+             d:DesignHeight="30" d:DesignWidth="380">   
         <DockPanel>
-            <TextBlock Text="Отправители" DockPanel.Dock="Left" Margin="5,0,5,0"/>
-            <ComboBox Name ="sendersList" SelectedIndex="0" DisplayMemberPath="Address" Width="180" DockPanel.Dock="Left"></ComboBox>
-            <Button Click="AddButtonClick">
-                <Image Height ="14" Source="C:\Users\Ilya\Source\Repos\CSharp_Level3\MyMailSender\Images\Add_color.png"></Image>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="80"></ColumnDefinition>
+                <ColumnDefinition MinWidth="180"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Отправители" Grid.Column="0" VerticalAlignment="Center"/>
+            <ComboBox Name ="sendersList" Grid.Column="1" SelectedIndex="0" DisplayMemberPath="Address" Width="180" DockPanel.Dock="Left"></ComboBox>
+            <Button Grid.Column="2" Click="AddButtonClick">
+                <Image Height ="14" Source="..\MyMailSender\Images\Add_color.png"></Image>
             </Button>
-            <Button Click="EditButtonClick">
-                <Image Height="14" Source="C:\Users\Ilya\Source\Repos\CSharp_Level3\MyMailSender\Images\Edit_color.png"></Image>
+            <Button Grid.Column="3" Click="EditButtonClick">
+                <Image Height="14" Source="..\MyMailSender\Images\Edit_color.png"></Image>
             </Button>
-            <Button Click="DeleteButtonClick">
-                <Image Height="14" Source="C:\Users\Ilya\Source\Repos\CSharp_Level3\MyMailSender\Images\Delete_color.png"></Image>
+            <Button Grid.Column="4" Click="DeleteButtonClick">
+                <Image Height="14" Source="..\MyMailSender\Images\Delete_color.png"></Image>
             </Button>
+        </Grid>           
         </DockPanel>   
-    </Grid>
-</UserControl>
+   </UserControl>
