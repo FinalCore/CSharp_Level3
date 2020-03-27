@@ -8,8 +8,8 @@ namespace MyMailSender
 {
     internal static class Database
     {
-        private static readonly EmailsDataContext _emailsDataContext = new EmailsDataContext();
+        private static readonly RecipientsDataContext _recipientsDataContext = new RecipientsDataContext();
 
-        public static IQueryable<Recipients> Recipients => from Email in _emailsDataContext.Recipients select Email;
+        public static IQueryable<Recipients> Recipients => from Email in _recipientsDataContext.Recipients select Email;
     }
 }

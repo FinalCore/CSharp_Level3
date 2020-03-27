@@ -63,14 +63,15 @@ namespace MailSender
             }
         }
 
-            public void SendMails(IQueryable<Recipient> emails)
-            {
+        public void SendMails(IQueryable<Recipient> emails)
+        {
                 foreach (Recipient email in emails)
                 {
                     SendMail(email.Email, email.Name);
                 }
-            }
+            
         }
     }
 }
+
 

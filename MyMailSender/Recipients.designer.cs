@@ -23,7 +23,7 @@ namespace MyMailSender
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="dbMailSenderTest")]
-	public partial class EmailsDataContext : System.Data.Linq.DataContext
+	public partial class RecipientsDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -35,31 +35,31 @@ namespace MyMailSender
     partial void DeleteRecipients(Recipients instance);
     #endregion
 		
-		public EmailsDataContext() : 
+		public RecipientsDataContext() : 
 				base(global::MyMailSender.Properties.Settings.Default.dbMailSenderTestConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public EmailsDataContext(string connection) : 
+		public RecipientsDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public EmailsDataContext(System.Data.IDbConnection connection) : 
+		public RecipientsDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public EmailsDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public RecipientsDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public EmailsDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public RecipientsDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
