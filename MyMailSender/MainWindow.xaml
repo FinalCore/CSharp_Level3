@@ -22,6 +22,41 @@
             <TextBlock Text="Приложение работает..."></TextBlock>
         </StatusBar>
         <TabControl x:Name="tabControl" DockPanel.Dock="Top">
+            <TabItem x:Name="SendMail" Header="Отправить письмо">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="144.8"></ColumnDefinition>
+                        <ColumnDefinition Width="55.2"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" Grid.ColumnSpan="2">
+                        <StackPanel   Margin="10">
+                            <StackPanel.Resources>
+                                <Style x:Key="Sender">
+                                    <Setter Property="Control.Margin" Value="10,5,10,5"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="Отправитель" Style="{StaticResource Sender}"></TextBlock>
+                            <TextBox x:Name="tbSenderLogin" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"></TextBox>
+                            <PasswordBox x:Name="pbSenderPassword" Style="{StaticResource Sender}" ></PasswordBox>
+                            <ComboBox Style="{StaticResource Sender}"></ComboBox>
+                            <Button x:Name="btnSendMail" Content="Отправить" Style="{StaticResource Sender}" Click="btnSendMail_Click"></Button>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Column="2">
+                        <DockPanel>
+                            <GroupBox DockPanel.Dock="Top" Header="Тема письма">
+                                <TextBox Name="MailTopic" />
+                            </GroupBox>
+                            <GroupBox Header="Текст письма">
+                                <Grid>
+                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="MailText"/>
+                                </Grid>
+                            </GroupBox>
+                        </DockPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
             <TabItem Header="Рассылка" ToolTip="Управление рассылкой">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
@@ -40,19 +75,19 @@
                             <Button>
                                 <Image Height="14" Source="Images\Delete_color.png"></Image>
                             </Button>
-                        </ToolBar>                        
+                        </ToolBar>
                         <ToolBar Header ="Перейти в планировщик" Band="0" Margin="10,0,0,0">
                             <Button x:Name="btnGoToCalendar" Click="btnGotoCalendar_Click">
                                 <Image Height="14" Source="Images\Calendar_color.png"></Image>
                             </Button>
-                        </ToolBar>                                     
+                        </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Получатели писем" DockPanel.Dock="Top">
                         <DataGrid Name="recepientsList"  AutoGenerateColumns="False" ItemsSource="{x:Static local:Database.Recipients}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Id}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Имя" Width="200" Binding="{Binding Name}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Email}"></DataGridTextColumn>
+                                <DataGridTextColumn x:Name="Name" Header="Имя" Width="200" Binding="{Binding Name}"></DataGridTextColumn>
+                                <DataGridTextColumn x:Name="Email" Header="Адрес" Width="*" Binding="{Binding Email}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
@@ -98,33 +133,33 @@
             <TabItem Name="Mails" Header="Письма">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition MinWidth="150" MaxWidth="300" Width="Auto"/>
+                        <ColumnDefinition MaxWidth="300" Width="150.4"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Список писем">
+                    <GroupBox Header="Список писем" Margin="0,0,0.4,0">
                         <DockPanel>
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1">
                                 <Button Content="Добавить"/>
                                 <Button Content="Удалить"/>
                             </UniformGrid>
                             <ListBox>
-                                
+
                             </ListBox>
                         </DockPanel>
                     </GroupBox>
-                    <GroupBox Header="Выбранное письмо" Grid.Column="1">
+                    <GroupBox Header="Выбранное письмо" Grid.ColumnSpan="2" Margin="150,0,0,0">
                         <DockPanel>
                             <GroupBox DockPanel.Dock="Top" Header="Тема письма">
                                 <TextBox Name="MailHeader" />
                             </GroupBox>
                             <GroupBox Header="Текст письма">
                                 <Grid>
-                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="MailBody"/>                             
+                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="MailBody"/>
                                 </Grid>
                             </GroupBox>
                         </DockPanel>
                     </GroupBox>
-                    <GridSplitter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="4" Background="Transparent"/>
+                    <GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="4" Background="Transparent" Grid.ColumnSpan="2" Margin="150,0,0,0"/>
                 </Grid>
             </TabItem>
         </TabControl>

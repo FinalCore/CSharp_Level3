@@ -19,8 +19,7 @@ namespace MyMailSender
         public string MessageSubject { get; set; }
         public string MessageBody { get; set; }
         public string To { get; set; }
-
-        public readonly string from;
+        public string From { get; set; }
 
         public EmailSendServiceClass(string sLogin, string sPassword)
         {
@@ -33,22 +32,20 @@ namespace MyMailSender
         /// </summary>
         /// <param name="mail"></param>
         /// <param name="name"></param>
-        public void SendMail(string mail, string name)
+        public void SendMail(string from, string to)
         {
             try
             {
-                using (var message = new MailMessage(strLogin, mail))
-                {
-                    message.Subject = this.MessageSubject;
-                    message.Body = this.MessageBody;
-
-                    message.IsBodyHtml = false;
-                    SmtpClient sc = new SmtpClient(strSmtp, smtpPort);
-                    sc.EnableSsl = true;
-                    sc.EnableSsl = true;
-                    sc.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    sc.UseDefaultCredentials = false;
-                    sc.Credentials = new NetworkCredential(strLogin, strPassword);
+                MailMessage message = new MailMessage(from, to);
+                message.Subject = this.MessageSubject;                
+                message.Body = this.MessageBody;
+                message.IsBodyHtml = false;
+                SmtpClient sc = new SmtpClient(strSmtp, smtpPort);
+                sc.EnableSsl = true;
+                sc.EnableSsl = true;
+                sc.DeliveryMethod = SmtpDeliveryMethod.Network;
+                sc.UseDefaultCredentials = false;
+                sc.Credentials = new NetworkCredential(strLogin, strPassword);
                     try
                     {
                         sc.Send(message);
@@ -56,8 +53,7 @@ namespace MyMailSender
                     catch (Exception ex)
                     {
                         MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
-                    }
-                }
+                    }                
                 MessageBox.Show("Почта отправлена!", "Ура!!!",
                           MessageBoxButton.OK, MessageBoxImage.Information);
             }
