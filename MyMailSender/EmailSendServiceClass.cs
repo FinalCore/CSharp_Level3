@@ -28,6 +28,11 @@ namespace MyMailSender
             strPassword = sPassword;
         }
 
+        /// <summary>
+        /// Отправка письма конкретному адресату
+        /// </summary>
+        /// <param name="mail"></param>
+        /// <param name="name"></param>
         public void SendMail(string mail, string name)
         {
             try

@@ -24,7 +24,23 @@ namespace MyMailSender
 
         private void OnSendButtonClick(object sender, RoutedEventArgs e)
         {
+            TestSenderCredentials testSenderCredentials = new TestSenderCredentials();
+            testSenderCredentials.Show();
+            
+            
+            if (string.IsNullOrEmpty(testSenderCredentials.strLogin))
+            {
+                MessageBox.Show("Выберите отправителя");
+                return;
+            }
+            if (string.IsNullOrEmpty(testSenderCredentials.strPassword))
+            {
+                MessageBox.Show("Укажите пароль отправителя");
+                return;
+            }
 
+            EmailSendServiceClass emailSender = new EmailSendServiceClass(testSenderCredentials.strLogin, testSenderCredentials.strPassword);
+            emailSender.SendMails((IQueryable<Recipient>)dgEmails.ItemsSource);
         }
 
         private void editSend_Checked(object sender, RoutedEventArgs e)
