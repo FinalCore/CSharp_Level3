@@ -10,6 +10,6 @@ namespace MyMailSender
     {
         private static readonly RecipientsDataContext _recipientsDataContext = new RecipientsDataContext();
 
-        public static IQueryable<Recipients> Recipients => from Email in _recipientsDataContext.Recipients select Email;
+        public static IQueryable<Recipient> Recipients => from Email in _recipientsDataContext.Recipients select Email;
     }
 }

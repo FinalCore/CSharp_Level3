@@ -61,7 +61,7 @@
             <TabItem Name="Calendar" Header="Планировщик" ToolTip="Планирование времени рассылки">
                 <DockPanel>
                     <GroupBox Header="Задачи" DockPanel.Dock="Left" Width="500">
-                        <ListBox SelectionChanged="ListBox_SelectionChanged">
+                        <ListBox>
                             <ListBoxItem HorizontalContentAlignment="Stretch">
                                 <GroupBox Header="Задача1" >
                                     <StackPanel>
@@ -95,7 +95,7 @@
                     </GroupBox>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Письма">
+            <TabItem Name="Mails" Header="Письма">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition MinWidth="150" MaxWidth="300" Width="Auto"/>
