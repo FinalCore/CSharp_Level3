@@ -15,6 +15,7 @@ namespace MyMailSender
         public MainWindow()
         {
             InitializeComponent();
+           cbRecipients.DataContext = Database.TestList;
         }              
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -54,8 +55,9 @@ namespace MyMailSender
             }
 
             EmailSendServiceClass emailSender = new EmailSendServiceClass(strLogin, strPassword);
-            //string to =
-            //emailSender.SendMail();
+            emailSender.MessageSubject = tbMailTopic.Text;
+            emailSender.MessageBody = tbMailText.Text;
+            emailSender.SendMail(strLogin, cbRecipients.Text);
 
         }
     }

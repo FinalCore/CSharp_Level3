@@ -25,12 +25,11 @@
             <TabItem x:Name="SendMail" Header="Отправить письмо">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="144.8"></ColumnDefinition>
-                        <ColumnDefinition Width="55.2"/>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Column="0" Grid.ColumnSpan="2">
-                        <StackPanel   Margin="10">
+                    <GroupBox Grid.Column="0">
+                        <StackPanel  x:Name="spSenders" Margin="10">
                             <StackPanel.Resources>
                                 <Style x:Key="Sender">
                                     <Setter Property="Control.Margin" Value="10,5,10,5"></Setter>
@@ -39,18 +38,18 @@
                             <TextBlock Text="Отправитель" Style="{StaticResource Sender}"></TextBlock>
                             <TextBox x:Name="tbSenderLogin" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"></TextBox>
                             <PasswordBox x:Name="pbSenderPassword" Style="{StaticResource Sender}" ></PasswordBox>
-                            <ComboBox Style="{StaticResource Sender}"></ComboBox>
+                            <ComboBox x:Name="cbRecipients" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"></ComboBox>
                             <Button x:Name="btnSendMail" Content="Отправить" Style="{StaticResource Sender}" Click="btnSendMail_Click"></Button>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Grid.Column="2">
+                    <GroupBox Grid.Column="1">
                         <DockPanel>
                             <GroupBox DockPanel.Dock="Top" Header="Тема письма">
-                                <TextBox Name="MailTopic" />
+                                <TextBox Name="tbMailTopic" />
                             </GroupBox>
                             <GroupBox Header="Текст письма">
                                 <Grid>
-                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="MailText"/>
+                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="tbMailText"/>
                                 </Grid>
                             </GroupBox>
                         </DockPanel>
