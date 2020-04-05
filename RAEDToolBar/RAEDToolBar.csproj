@@ -4,19 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB0293AC-0643-4BA1-AD09-19EBC284FBD3}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>MyMailSender</RootNamespace>
-    <AssemblyName>MyMailSender</AssemblyName>
+    <ProjectGuid>{724CCB6C-7A38-4441-8C67-6A8F8751D158}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>RAEDToolBar</RootNamespace>
+    <AssemblyName>RAEDToolBar</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -37,7 +34,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,27 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="Database.cs" />
-    <Compile Include="Recipients.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Recipients.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="TestData.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="RAEDToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="RAEDToolBar.xaml.cs">
+      <DependentUpon>RAEDToolBar.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -114,67 +95,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Recipients.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Recipients.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Recipients.dbml.layout">
-      <DependentUpon>Recipients.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EmailSendServiceDLL\EmailSendServiceDLL.csproj">
-      <Project>{ad22950c-e2f5-44b0-b0e9-dcac1e0e215c}</Project>
-      <Name>EmailSendServiceDLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MailSender\MailSender.lib.csproj">
-      <Project>{7ceaca5f-19eb-446c-b5c7-60f49e73b744}</Project>
-      <Name>MailSender.lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RAEDToolBar\RAEDToolBar.csproj">
-      <Project>{724ccb6c-7a38-4441-8c67-6a8f8751d158}</Project>
-      <Name>RAEDToolBar</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Add_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Attach.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Calendar_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Delete_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Edit_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Edit_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Send_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Send.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

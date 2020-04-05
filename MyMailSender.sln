@@ -7,8 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMailSender", "MyMailSende
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{0CF61F7B-DC8E-4142-A32B-53013D6C2F0E}"
 	ProjectSection(SolutionItems) = preProject
+		dbCreationReadme.txt = dbCreationReadme.txt
 		TestData.cs = TestData.cs
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib", "MailSender\MailSender.lib.csproj", "{7CEACA5F-19EB-446C-B5C7-60F49E73B744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAEDToolBar", "RAEDToolBar\RAEDToolBar.csproj", "{724CCB6C-7A38-4441-8C67-6A8F8751D158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSendServiceDLL", "EmailSendServiceDLL\EmailSendServiceDLL.csproj", "{AD22950C-E2F5-44B0-B0E9-DCAC1E0E215C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +27,18 @@ Global
 		{DB0293AC-0643-4BA1-AD09-19EBC284FBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB0293AC-0643-4BA1-AD09-19EBC284FBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB0293AC-0643-4BA1-AD09-19EBC284FBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CEACA5F-19EB-446C-B5C7-60F49E73B744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CEACA5F-19EB-446C-B5C7-60F49E73B744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CEACA5F-19EB-446C-B5C7-60F49E73B744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CEACA5F-19EB-446C-B5C7-60F49E73B744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724CCB6C-7A38-4441-8C67-6A8F8751D158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724CCB6C-7A38-4441-8C67-6A8F8751D158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724CCB6C-7A38-4441-8C67-6A8F8751D158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724CCB6C-7A38-4441-8C67-6A8F8751D158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD22950C-E2F5-44B0-B0E9-DCAC1E0E215C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD22950C-E2F5-44B0-B0E9-DCAC1E0E215C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD22950C-E2F5-44B0-B0E9-DCAC1E0E215C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD22950C-E2F5-44B0-B0E9-DCAC1E0E215C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

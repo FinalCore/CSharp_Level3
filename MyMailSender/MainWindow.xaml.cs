@@ -4,14 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using EmailSendServiceDLL;
 
 namespace MyMailSender
 {
@@ -23,7 +16,8 @@ namespace MyMailSender
         public MainWindow()
         {
             InitializeComponent();
-        }
+           cbRecipients.DataContext = Database.TestList;
+        }              
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -32,11 +26,39 @@ namespace MyMailSender
 
         private void OnSendButtonClick(object sender, RoutedEventArgs e)
         {
-
+                   
         }
 
         private void editSend_Checked(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void btnGotoCalendar_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedItem = Calendar;
+        }
+ 
+
+        private void btnSendMail_Click(object sender, RoutedEventArgs e)
+        {
+            string strLogin = tbSenderLogin.Text;
+            string strPassword = pbSenderPassword.Password;
+            if (string.IsNullOrEmpty(strLogin))
+            {
+                MessageBox.Show("Выберите отправителя");
+                return;
+            }
+            if (string.IsNullOrEmpty(strPassword))
+            {
+                MessageBox.Show("Укажите пароль отправителя");
+                return;
+            }
+
+            EmailSendServiceClass emailSender = new EmailSendServiceClass(strLogin, strPassword);
+            emailSender.MessageSubject = tbMailTopic.Text;
+            emailSender.MessageBody = tbMailText.Text;
+            emailSender.SendMail(strLogin, cbRecipients.Text);
 
         }
     }
