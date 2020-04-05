@@ -78,8 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="RAEDToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

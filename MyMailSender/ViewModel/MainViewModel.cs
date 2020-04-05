@@ -1,34 +1,49 @@
 using GalaSoft.MvvmLight;
+using System.Collections.ObjectModel;
+using MyMailSender.Services;
+using GalaSoft.MvvmLight.Command;
 
 namespace MyMailSender.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private ObservableCollection<Recipient> _Recipients;
+
+        public RelayCommand ReadAllCommand { get; set; }
+
+        public ObservableCollection<Recipient> Recipients
+        {
+            get => _Recipients;
+            set
+            {
+                _Recipients = value;
+                RaisePropertyChanged(nameof(Recipients));
+            }
+        }
+
+        IDataAccessService _serviceProxy;
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(IDataAccessService serviceProxy)
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            _serviceProxy = serviceProxy;
+            Recipients = new ObservableCollection<Recipient>();
+            ReadAllCommand = new RelayCommand(GetRecipients);
         }
+
+        /// <summary>
+        /// В этом методе с помощью метода GetEmails() данные читаются из БД и помещаются в наблюдаемую коллекцию Emails
+        /// </summary>
+        void GetRecipients()
+        {
+            Recipients.Clear();
+            foreach(var item in _serviceProxy.GetRecipients())
+            {
+                Recipients.Add(item);
+            }
+        }
+        
     }
 }
