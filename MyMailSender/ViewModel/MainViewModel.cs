@@ -9,7 +9,21 @@ namespace MyMailSender.ViewModel
     {
         private ObservableCollection<Recipient> _Recipients;
 
+        private Recipient _RecipientInfo;
+
         public RelayCommand ReadAllCommand { get; set; }
+
+        public RelayCommand<Recipient> SaveCommand { get; set; }
+
+        public Recipient RecipientInfo
+        {
+            get => _RecipientInfo;
+            set
+            {
+                _RecipientInfo = value;
+                RaisePropertyChanged(nameof(RecipientInfo));
+            }
+        }
 
         public ObservableCollection<Recipient> Recipients
         {
@@ -30,7 +44,9 @@ namespace MyMailSender.ViewModel
         {
             _serviceProxy = serviceProxy;
             Recipients = new ObservableCollection<Recipient>();
+            RecipientInfo = new Recipient();
             ReadAllCommand = new RelayCommand(GetRecipients);
+            SaveCommand = new RelayCommand<Recipient>(SaveRecipient);
         }
 
         /// <summary>
@@ -44,6 +60,16 @@ namespace MyMailSender.ViewModel
                 Recipients.Add(item);
             }
         }
-        
+
+        void SaveRecipient(Recipient recipient)
+        {
+            RecipientInfo.Id = _serviceProxy.AddRecipient(recipient);
+            if (RecipientInfo.Id != 0)
+            {
+                Recipients.Add(RecipientInfo);
+                RaisePropertyChanged(nameof(RecipientInfo));
+            }
+        }
+
     }
 }

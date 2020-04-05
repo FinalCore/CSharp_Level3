@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:RAEDToolBar;assembly=RAEDToolBar"
         xmlns:local="clr-namespace:MyMailSender"       
+        xmlns:views="clr-namespace:MyMailSender.View"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MyMailSender.MainWindow"       
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -83,13 +84,13 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Получатели писем" DockPanel.Dock="Top">
-                        <DataGrid x:Name="recepientsList"  AutoGenerateColumns="False" ItemsSource="{x:Static local:Database.Recipients}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Id}"/>
-                                <DataGridTextColumn x:Name="Name" Header="Имя" Width="200" Binding="{Binding Name}"/>
-                                <DataGridTextColumn x:Name="Email" Header="Адрес" Width="*" Binding="{Binding Email}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>                                
+                            </Grid.ColumnDefinitions>
+                            <views:RecipientInfoView x:Name="recipientsInfo" Width="Auto"></views:RecipientInfoView>
+                        </Grid>
+                       
                     </GroupBox>
                 </DockPanel>
             </TabItem>

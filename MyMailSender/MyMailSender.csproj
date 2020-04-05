@@ -99,6 +99,9 @@
     <Compile Include="View\RecipientInfoView.xaml.cs">
       <DependentUpon>RecipientInfoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SaveRecipientView.xaml.cs">
+      <DependentUpon>SaveRecipientView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\RecipientInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SaveRecipientView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,6 +10,8 @@ namespace MyMailSender.Services
     public interface IDataAccessService
     {
         ObservableCollection<Recipient> GetRecipients();
+
+        int AddRecipient(Recipient recipient);
     }
    public class DataAccessService : IDataAccessService
     {
@@ -17,7 +19,7 @@ namespace MyMailSender.Services
         public DataAccessService()
         {
             context = new RecipientsDataContext();
-        }
+        }        
 
         public ObservableCollection<Recipient> GetRecipients()
         {
@@ -27,6 +29,13 @@ namespace MyMailSender.Services
                 Recipients.Add(item);
             }
             return Recipients;
+        }
+
+        public int AddRecipient(Recipient recipient)
+        {
+            context.Recipients.InsertOnSubmit(recipient);
+            context.SubmitChanges();
+            return recipient.Id;
         }
     }
 }
