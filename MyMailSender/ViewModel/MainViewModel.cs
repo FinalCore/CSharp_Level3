@@ -8,12 +8,14 @@ namespace MyMailSender.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private ObservableCollection<Recipient> _Recipients;
-
         private Recipient _RecipientInfo;
+        private Recipient _SelectedRecipient;
 
         public RelayCommand ReadAllCommand { get; set; }
 
         public RelayCommand<Recipient> SaveCommand { get; set; }
+
+        public RelayCommand<Recipient> DeleteCommand { get; }
 
         //Описываем свойства, с которыми должны взаимодействовать представления (views)
         public Recipient RecipientInfo
@@ -23,6 +25,15 @@ namespace MyMailSender.ViewModel
             {
                 _RecipientInfo = value;
                 RaisePropertyChanged(nameof(RecipientInfo));
+            }
+        } 
+        public Recipient SelectedRecipient
+        {
+            get => _SelectedRecipient;
+            set
+            {
+                _SelectedRecipient = value;
+                RaisePropertyChanged(nameof(SelectedRecipient));
             }
         }
 
@@ -43,7 +54,8 @@ namespace MyMailSender.ViewModel
             Recipients = new ObservableCollection<Recipient>();
             RecipientInfo = new Recipient();
             ReadAllCommand = new RelayCommand(GetRecipients);
-            SaveCommand = new RelayCommand<Recipient>(SaveRecipient);
+            SaveCommand = new RelayCommand<Recipient>(SaveRecipient, CanSaveRecipientExecute);
+            DeleteCommand = new RelayCommand<Recipient>(DeleteRecipient);
         }
 
         /// <summary>
@@ -66,6 +78,14 @@ namespace MyMailSender.ViewModel
                 Recipients.Add(RecipientInfo);
                 RaisePropertyChanged(nameof(RecipientInfo));
             }
+        }
+
+        bool CanSaveRecipientExecute(Recipient SelectedRecipient) => SelectedRecipient.Id != 0;
+
+
+        void DeleteRecipient(Recipient recipient)
+        {
+            Recipients.Remove(SelectedRecipient);
         }
 
     }
