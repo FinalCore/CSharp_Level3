@@ -11,7 +11,7 @@ namespace MyMailSender
     {
         public MainWindow()
         {
-            InitializeComponent();
+           InitializeComponent();
            cbRecipients.DataContext = Database.TestList;
         }              
 

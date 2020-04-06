@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MyMailSender.View"
              mc:Ignorable="d"
              DataContext="{Binding Main, Source={StaticResource Locator}}" Height="190" Width="170">
-    <Grid Margin="0 50 0 0">
+    <Grid Margin="0 10 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -15,16 +15,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock TextWrapping="Wrap" Text="Id:"/>
-        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Value:"/>
-        <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Name:"/>
+        <TextBlock Grid.Row="0" Text="Добавить отправителя" Grid.ColumnSpan="2" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Id:"/>
+        <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Email:"/>
+        <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Name:"/>
 
-        <TextBox Grid.Column="1" TextWrapping="Wrap" Text="{Binding RecipientInfo.Id,Mode=TwoWay}"/>
-        <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding RecipientInfo.Value,Mode=TwoWay}"/>
-        <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding RecipientInfo.Name,Mode=TwoWay}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding RecipientInfo.Id,Mode=TwoWay}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding RecipientInfo.Email,Mode=TwoWay}"/>
+        <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding RecipientInfo.Name,Mode=TwoWay}"/>
         <Button Content="Сохранить" 
                 FontWeight="Bold" Grid.Row="5"
                 Grid.ColumnSpan="2"
