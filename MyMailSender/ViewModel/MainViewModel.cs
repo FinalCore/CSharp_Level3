@@ -15,6 +15,7 @@ namespace MyMailSender.ViewModel
 
         public RelayCommand<Recipient> SaveCommand { get; set; }
 
+        //Описываем свойства, с которыми должны взаимодействовать представления (views)
         public Recipient RecipientInfo
         {
             get => _RecipientInfo;
@@ -36,10 +37,6 @@ namespace MyMailSender.ViewModel
         }
 
         IDataAccessService _serviceProxy;
-
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
         public MainViewModel(IDataAccessService serviceProxy)
         {
             _serviceProxy = serviceProxy;
@@ -50,7 +47,7 @@ namespace MyMailSender.ViewModel
         }
 
         /// <summary>
-        /// В этом методе с помощью метода GetEmails() данные читаются из БД и помещаются в наблюдаемую коллекцию Emails
+        /// В этом методе с помощью метода GetRecipients() данные читаются из БД и помещаются в наблюдаемую коллекцию Recipients
         /// </summary>
         void GetRecipients()
         {

@@ -86,13 +86,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Database.cs" />
     <Compile Include="Recipients.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Recipients.dbml</DependentUpon>
     </Compile>
     <Compile Include="Services\DataAccessService.cs" />
+    <Compile Include="Services\IDataAccessService.cs" />
     <Compile Include="TestData.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

@@ -12,7 +12,7 @@ namespace MyMailSender
         public MainWindow()
         {
            InitializeComponent();
-           cbRecipients.DataContext = Database.TestList;
+           
         }              
 
         private void Button_Click(object sender, RoutedEventArgs e)

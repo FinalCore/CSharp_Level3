@@ -6,20 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MyMailSender.Services
-{
-    public interface IDataAccessService
-    {
-        ObservableCollection<Recipient> GetRecipients();
-
-        int AddRecipient(Recipient recipient);
-    }
+{   
    public class DataAccessService : IDataAccessService
     {
-        RecipientsDataContext context;
-        public DataAccessService()
-        {
-            context = new RecipientsDataContext();
-        }        
+        private readonly RecipientsDataContext context = new RecipientsDataContext();            
 
         public ObservableCollection<Recipient> GetRecipients()
         {
