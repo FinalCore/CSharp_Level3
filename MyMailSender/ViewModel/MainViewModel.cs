@@ -11,9 +11,9 @@ namespace MyMailSender.ViewModel
         private Recipient _RecipientInfo;
         private Recipient _SelectedRecipient;
 
-        public RelayCommand ReadAllCommand { get; set; }
+        public RelayCommand ReadAllCommand { get; }
 
-        public RelayCommand<Recipient> SaveCommand { get; set; }
+        public RelayCommand<Recipient> SaveCommand { get; }
 
         public RelayCommand<Recipient> DeleteCommand { get; }
 
@@ -31,7 +31,7 @@ namespace MyMailSender.ViewModel
         {
             get => _SelectedRecipient;
             set
-            {
+            {   
                 _SelectedRecipient = value;
                 RaisePropertyChanged(nameof(SelectedRecipient));
             }
@@ -42,6 +42,8 @@ namespace MyMailSender.ViewModel
             get => _Recipients;
             set
             {
+                Set(ref _Recipients, value);
+                if (Equals(_Recipients, value)) return;
                 _Recipients = value;
                 RaisePropertyChanged(nameof(Recipients));
             }
@@ -54,7 +56,7 @@ namespace MyMailSender.ViewModel
             Recipients = new ObservableCollection<Recipient>();
             RecipientInfo = new Recipient();
             ReadAllCommand = new RelayCommand(GetRecipients);
-            SaveCommand = new RelayCommand<Recipient>(SaveRecipient, CanSaveRecipientExecute);
+            SaveCommand = new RelayCommand<Recipient>(SaveRecipient);
             DeleteCommand = new RelayCommand<Recipient>(DeleteRecipient);
         }
 
@@ -76,11 +78,11 @@ namespace MyMailSender.ViewModel
             if (RecipientInfo.Id != 0)
             {
                 Recipients.Add(RecipientInfo);
-                RaisePropertyChanged(nameof(RecipientInfo));
+                //RaisePropertyChanged(nameof(RecipientInfo));
             }
         }
 
-        bool CanSaveRecipientExecute(Recipient SelectedRecipient) => SelectedRecipient.Id != 0;
+        //bool CanSaveRecipientExecute(Recipient recipient) => true;
 
 
         void DeleteRecipient(Recipient recipient)
