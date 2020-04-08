@@ -23,41 +23,7 @@
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Приложение работает..."/>
         </StatusBar>
-        <TabControl x:Name="tabControl" DockPanel.Dock="Top">
-            <TabItem x:Name="SendMail" Header="Отправить письмо">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Column="0">
-                        <StackPanel  x:Name="spSenders" Margin="10">
-                            <StackPanel.Resources>
-                                <Style x:Key="Sender">
-                                    <Setter Property="FrameworkElement.Margin" Value="10,5,10,5"/>
-                                </Style>
-                            </StackPanel.Resources>
-                            <TextBlock Text="Отправитель" Style="{StaticResource Sender}"/>
-                            <TextBox x:Name="tbSenderLogin" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"/>
-                            <PasswordBox x:Name="pbSenderPassword" Style="{StaticResource Sender}" />
-                            <ComboBox x:Name="cbRecipients" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"/>
-                            <Button x:Name="btnSendMail" Content="Отправить" Style="{StaticResource Sender}" Click="btnSendMail_Click"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <GroupBox Grid.Column="1">
-                        <DockPanel>
-                            <GroupBox DockPanel.Dock="Top" Header="Тема письма">
-                                <TextBox x:Name="tbMailTopic" />
-                            </GroupBox>
-                            <GroupBox Header="Текст письма">
-                                <Grid>
-                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="tbMailText"/>
-                                </Grid>
-                            </GroupBox>
-                        </DockPanel>
-                    </GroupBox>
-                </Grid>
-            </TabItem>
+        <TabControl x:Name="tabControl" DockPanel.Dock="Top">            
             <TabItem Header="Рассылка" ToolTip="Управление рассылкой">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
@@ -95,6 +61,40 @@
                        
                     </GroupBox>
                 </DockPanel>
+            </TabItem>
+            <TabItem x:Name="SendMail" Header="Отправить письмо">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0">
+                        <StackPanel  x:Name="spSenders" Margin="10">
+                            <StackPanel.Resources>
+                                <Style x:Key="Sender">
+                                    <Setter Property="FrameworkElement.Margin" Value="10,5,10,5"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="Отправитель" Style="{StaticResource Sender}"/>
+                            <TextBox x:Name="tbSenderLogin" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"/>
+                            <PasswordBox x:Name="pbSenderPassword" Style="{StaticResource Sender}" />
+                            <ComboBox x:Name="cbRecipients" Style="{StaticResource Sender}" Text="rimedheart@yandex.ru"/>
+                            <Button x:Name="btnSendMail" Content="Отправить" Style="{StaticResource Sender}" Click="btnSendMail_Click"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1">
+                        <DockPanel>
+                            <GroupBox DockPanel.Dock="Top" Header="Тема письма">
+                                <TextBox x:Name="tbMailTopic" />
+                            </GroupBox>
+                            <GroupBox Header="Текст письма">
+                                <Grid>
+                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="tbMailText"/>
+                                </Grid>
+                            </GroupBox>
+                        </DockPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
             <TabItem x:Name="Calendar" Header="Планировщик" ToolTip="Планирование времени рассылки">
                 <DockPanel>

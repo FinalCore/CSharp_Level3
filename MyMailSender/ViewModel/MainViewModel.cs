@@ -10,12 +10,15 @@ namespace MyMailSender.ViewModel
         private ObservableCollection<Recipient> _Recipients;
         private Recipient _RecipientInfo;
         private Recipient _SelectedRecipient;
+        private string _RecipientSearch;
 
         public RelayCommand ReadAllCommand { get; }
 
         public RelayCommand<Recipient> SaveCommand { get; }
 
         public RelayCommand<Recipient> DeleteCommand { get; }
+
+        public RelayCommand<string> RecipientSearchCommand { get; }
 
         //Описываем свойства, с которыми должны взаимодействовать представления (views)
         public Recipient RecipientInfo
@@ -37,6 +40,16 @@ namespace MyMailSender.ViewModel
             }
         }
 
+        public string RecipientSearch
+        {
+            get => _RecipientSearch;
+            set
+            {
+                _RecipientSearch = value;
+                RaisePropertyChanged(nameof(RecipientSearch));
+            }
+        }
+
         public ObservableCollection<Recipient> Recipients
         {
             get => _Recipients;
@@ -55,9 +68,11 @@ namespace MyMailSender.ViewModel
             _serviceProxy = serviceProxy;
             Recipients = new ObservableCollection<Recipient>();
             RecipientInfo = new Recipient();
+            RecipientSearch = null;
             ReadAllCommand = new RelayCommand(GetRecipients);
             SaveCommand = new RelayCommand<Recipient>(SaveRecipient);
             DeleteCommand = new RelayCommand<Recipient>(DeleteRecipient);
+            RecipientSearchCommand = new RelayCommand<string>(FindRecipient);
         }
 
         /// <summary>
@@ -85,7 +100,6 @@ namespace MyMailSender.ViewModel
 
         //bool CanSaveRecipientExecute(Recipient recipient) => true;
 
-
         void DeleteRecipient(Recipient recipient)
         {
             recipient = RecipientInfo;
@@ -96,6 +110,19 @@ namespace MyMailSender.ViewModel
                 //RaisePropertyChanged(nameof(RecipientInfo));
             }
             
+        }
+
+        /// <summary>
+        /// Метод для осуществеления поиска по имени получателя 
+        /// </summary>
+        /// <param name="_RecipientSearch"></param>
+        void FindRecipient(string _RecipientSearch)
+        {
+            foreach (var item in Recipients)
+            {
+                if (item.Name.Contains(_RecipientSearch))
+                    SelectedRecipient = item;
+            }
         }
 
     }
