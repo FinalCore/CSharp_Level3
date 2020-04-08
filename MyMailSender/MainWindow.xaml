@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:MyMailSender"       
         xmlns:views="clr-namespace:MyMailSender.View"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MyMailSender.MainWindow"       
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d"   
+    Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RAEDToolBar
@@ -8,6 +9,14 @@ namespace RAEDToolBar
         public event RoutedEventHandler Add;
         public event RoutedEventHandler Edit;
         public event RoutedEventHandler Delete;
+
+        ////Определяем DependencyProperty для доступа к комбобоксу пользовательского контрола RAEDToolbar из разметки главноого окна
+        public static readonly DependencyProperty CbUserControlContentProperty;
+
+        static RAEDToolBarControl()
+        {
+            CbUserControlContentProperty = DependencyProperty.Register("cbContent", typeof(List<string>), typeof(RAEDToolBarControl));
+        }
 
         public RAEDToolBarControl()
         {
