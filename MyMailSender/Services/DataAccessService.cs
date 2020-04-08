@@ -27,5 +27,12 @@ namespace MyMailSender.Services
             context.SubmitChanges();
             return recipient.Id;
         }
+        
+        public int DeleteRecipient(Recipient recipient)
+        {
+            context.Recipients.DeleteOnSubmit(recipient);
+            context.SubmitChanges();
+            return recipient.Id;
+        }
     }
 }

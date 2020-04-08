@@ -89,7 +89,7 @@
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition Width="2*"/>                                
                             </Grid.ColumnDefinitions>
-                            <views:RecipientInfoView x:Name="recipientsInfo" Grid.Column="0"></views:RecipientInfoView>
+                            <views:RecipientInfoView x:Name="recipientsInfo" Grid.Column="0" VerticalAlignment="Top"></views:RecipientInfoView>
                             <views:SaveRecipientView x:Name="saverecipient" Grid.Column="1" VerticalAlignment="Top"></views:SaveRecipientView>
                         </Grid>
                        

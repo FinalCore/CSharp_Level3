@@ -26,7 +26,7 @@ namespace MyMailSender.ViewModel
                 _RecipientInfo = value;
                 RaisePropertyChanged(nameof(RecipientInfo));
             }
-        } 
+        }
         public Recipient SelectedRecipient
         {
             get => _SelectedRecipient;
@@ -74,10 +74,11 @@ namespace MyMailSender.ViewModel
 
         void SaveRecipient(Recipient recipient)
         {
-            RecipientInfo.Id = _serviceProxy.AddRecipient(recipient);
-            if (RecipientInfo.Id != 0)
+            recipient = RecipientInfo;
+            recipient.Id = _serviceProxy.AddRecipient(recipient);
+            if (recipient.Id != 0)
             {
-                Recipients.Add(RecipientInfo);
+                Recipients.Add(recipient);
                 //RaisePropertyChanged(nameof(RecipientInfo));
             }
         }
@@ -87,7 +88,14 @@ namespace MyMailSender.ViewModel
 
         void DeleteRecipient(Recipient recipient)
         {
-            Recipients.Remove(SelectedRecipient);
+            recipient = RecipientInfo;
+            recipient.Id = _serviceProxy.DeleteRecipient(recipient);
+            if (recipient.Id != 0)
+            {
+                Recipients.Remove(recipient);
+                //RaisePropertyChanged(nameof(RecipientInfo));
+            }
+            
         }
 
     }

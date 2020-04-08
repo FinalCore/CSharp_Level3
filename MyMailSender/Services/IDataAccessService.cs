@@ -12,5 +12,7 @@ namespace MyMailSender.Services
         ObservableCollection<Recipient> GetRecipients();
 
         int AddRecipient(Recipient recipient);
+
+        int DeleteRecipient(Recipient recipient);
     }
 }
