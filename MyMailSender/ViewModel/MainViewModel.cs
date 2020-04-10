@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using MyMailSender.Services;
 using GalaSoft.MvvmLight.Command;
+using MyMailSender.View;
 
 namespace MyMailSender.ViewModel
 {
@@ -89,7 +90,7 @@ namespace MyMailSender.ViewModel
 
         void SaveRecipient(Recipient recipient)
         {
-            recipient = RecipientInfo;
+           // recipient = RecipientInfo;
             recipient.Id = _serviceProxy.AddRecipient(recipient);
             if (recipient.Id != 0)
             {
@@ -121,7 +122,7 @@ namespace MyMailSender.ViewModel
             foreach (var item in Recipients)
             {
                 if (item.Name.Contains(_RecipientSearch))
-                    SelectedRecipient = item;
+                 RecipientInfo = item;               
             }
         }
 

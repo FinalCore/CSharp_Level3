@@ -22,6 +22,6 @@ namespace MyMailSender.View
         public RecipientInfoView()
         {
             InitializeComponent();
-        }
+        }       
     }
 }
