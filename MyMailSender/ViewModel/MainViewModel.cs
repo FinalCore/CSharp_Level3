@@ -121,8 +121,18 @@ namespace MyMailSender.ViewModel
         {
             foreach (var item in Recipients)
             {
-                if (item.Name.Contains(_RecipientSearch))
-                 RecipientInfo = item;               
+                //Проверка совпадения текста в окне поиска и имени получателя
+                //if (item.Name.Contains(_RecipientSearch))
+                // RecipientInfo = item; 
+
+                //Проверка совпадения текста в окне поиска и любого свойства получателя
+                var properties = item.GetType().GetProperties();
+                foreach (var element in properties)
+                {
+                    var temp = element.GetValue(item);
+                    if (temp.ToString().Contains(_RecipientSearch))
+                    RecipientInfo = item;
+                }
             }
         }
 
