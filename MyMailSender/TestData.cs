@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MailSender;
+﻿using System.Collections.Generic;
 using MailSender.lib;
 
 

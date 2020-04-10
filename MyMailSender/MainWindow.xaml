@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:RAEDToolBar;assembly=RAEDToolBar"
         xmlns:local="clr-namespace:MyMailSender"       
+        xmlns:views="clr-namespace:MyMailSender.View"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MyMailSender.MainWindow"       
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d"   
+    Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -22,7 +23,45 @@
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Приложение работает..."/>
         </StatusBar>
-        <TabControl x:Name="tabControl" DockPanel.Dock="Top">
+        <TabControl x:Name="tabControl" DockPanel.Dock="Top">            
+            <TabItem Header="Рассылка" ToolTip="Управление рассылкой">
+                <DockPanel>
+                    <ToolBarTray DockPanel.Dock="Top">
+                        <ToolBar>
+                            <uc:RAEDToolBarControl x:Name="tbSenders" Width="320"/>
+                        </ToolBar>
+                        <ToolBar Header="Сервера" Band="1">
+                            <ComboBox x:Name="serversList" ItemsSource="{x:Static local:TestData.Servers}" SelectedIndex="0" Width="180" Margin="27,0,0,0"
+                                       DisplayMemberPath="Name"/>
+                            <Button>
+                                <Image Height ="14" Source="Images\Add_color.png"/>
+                            </Button>
+                            <Button>
+                                <Image Height="14" Source="Images\Edit_color.png"/>
+                            </Button>
+                            <Button>
+                                <Image Height="14" Source="Images\Delete_color.png"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Header ="Перейти в планировщик" Band="0" Margin="10,0,0,0">
+                            <Button x:Name="btnGoToCalendar" Click="btnGotoCalendar_Click">
+                                <Image Height="14" Source="Images\Calendar_color.png"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <GroupBox Header="Получатели писем" DockPanel.Dock="Top">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="2*"/>                                
+                            </Grid.ColumnDefinitions>
+                            <views:RecipientInfoView x:Name="recipientsInfo" Grid.Column="0" VerticalAlignment="Top"></views:RecipientInfoView>
+                            <views:SaveRecipientView x:Name="saverecipient" Grid.Column="1" VerticalAlignment="Top"></views:SaveRecipientView>
+                        </Grid>
+                       
+                    </GroupBox>
+                </DockPanel>
+            </TabItem>
             <TabItem x:Name="SendMail" Header="Отправить письмо">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -56,42 +95,6 @@
                         </DockPanel>
                     </GroupBox>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Рассылка" ToolTip="Управление рассылкой">
-                <DockPanel>
-                    <ToolBarTray DockPanel.Dock="Top">
-                        <ToolBar>
-                            <uc:RAEDToolBarControl x:Name="tbSenders" Width="320"/>
-                        </ToolBar>
-                        <ToolBar Header="Сервера" Band="1">
-                            <ComboBox x:Name="serversList" ItemsSource="{x:Static local:TestData.Servers}" SelectedIndex="0" Width="180" Margin="27,0,0,0"
-                                       DisplayMemberPath="Name"/>
-                            <Button>
-                                <Image Height ="14" Source="Images\Add_color.png"/>
-                            </Button>
-                            <Button>
-                                <Image Height="14" Source="Images\Edit_color.png"/>
-                            </Button>
-                            <Button>
-                                <Image Height="14" Source="Images\Delete_color.png"/>
-                            </Button>
-                        </ToolBar>
-                        <ToolBar Header ="Перейти в планировщик" Band="0" Margin="10,0,0,0">
-                            <Button x:Name="btnGoToCalendar" Click="btnGotoCalendar_Click">
-                                <Image Height="14" Source="Images\Calendar_color.png"/>
-                            </Button>
-                        </ToolBar>
-                    </ToolBarTray>
-                    <GroupBox Header="Получатели писем" DockPanel.Dock="Top">
-                        <DataGrid x:Name="recepientsList"  AutoGenerateColumns="False" ItemsSource="{x:Static local:Database.Recipients}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Id}"/>
-                                <DataGridTextColumn x:Name="Name" Header="Имя" Width="200" Binding="{Binding Name}"/>
-                                <DataGridTextColumn x:Name="Email" Header="Адрес" Width="*" Binding="{Binding Email}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </GroupBox>
-                </DockPanel>
             </TabItem>
             <TabItem x:Name="Calendar" Header="Планировщик" ToolTip="Планирование времени рассылки">
                 <DockPanel>

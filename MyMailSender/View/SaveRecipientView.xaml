@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="MyMailSender.View.SaveRecipientView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
+             xmlns:local="clr-namespace:MyMailSender.View"
+             mc:Ignorable="d"
+             DataContext="{Binding Main, Source={StaticResource Locator}}" Height="190" Width="170">
+    <Grid DataContext="{Binding RecipientInfo}" Margin="0 10 0 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Text="Добавить отправителя" Grid.ColumnSpan="2" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Id:"/>
+        <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Email:"/>
+        <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Name:"/>
+        <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Id}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Email}"/>
+        <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Name}"/>
+        <Button Content="Сохранить" 
+                FontWeight="Bold" Grid.Row="5"
+                Grid.ColumnSpan="2"
+                 Command="{Binding DataContext.SaveCommand,
+            RelativeSource={RelativeSource AncestorType=UserControl}}"
+                CommandParameter="{Binding}"  Height="22" Width="140"/>
+    </Grid>
+</UserControl>
