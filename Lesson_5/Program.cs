@@ -8,6 +8,7 @@ using System.Threading;
 
 namespace Lesson_5
 {
+    
     public class Factorial
     {
         public int Fact { get; set; } = 1;
@@ -18,24 +19,48 @@ namespace Lesson_5
     {
         static void Main(string[] args)
         {
-            Factorial arg = new Factorial();
-            Console.WriteLine("Введите число, для которого нужно вычислить факториал");
-            arg.Number = int.Parse(Console.ReadLine());
+            #region a) факториал числа N, которое вводится с клавиатуры. Итерация делается в одном из двух потоков, и ее результат передается другому потоку.
 
-            Thread thread = new Thread(()=> FactorialCalc(arg));
+            //Factorial arg = new Factorial();
+            //Console.WriteLine("Введите число, для которого нужно вычислить факториал");
+            //arg.Number = int.Parse(Console.ReadLine());
 
-            // запускаем вторичный поток
-            thread.Start();
+            //Thread thread = new Thread(()=> FactorialCalc(arg));
 
-            // приостанавливаем первичный поток
-            Thread.Sleep(200);
-            // запускаем первичный поток
-            FactorialCalc(arg);
-            Console.WriteLine(new string('-', 25) + $"\nРезультат равен {arg.Fact}");
+            //// запускаем вторичный поток
+            //thread.Start();
+
+            //// приостанавливаем первичный поток
+            //Thread.Sleep(200);
+            //// запускаем первичный поток
+            //FactorialCalc(arg);
+            //Console.WriteLine(new string('-', 25) + $"\nРезультат равен {arg.Fact}");
+            #endregion
+
+            #region b) сумма целых чисел до N. Каждая итерация суммирования чисел делается в отдельном потоке
+            Console.WriteLine("Введите максимальное число последовательности, для которой нужно вычислить сумму");
+            int number = int.Parse(Console.ReadLine());
+            int sum = 0;
+            Thread[] threads = new Thread[number];
+            for (int i = 0; i < number; i++)
+            {
+                threads[i] = new Thread(() => Sum(ref number, ref sum));
+            }
+
+            foreach(var item in threads)
+            {
+                item.Start();
+                item.Join();
+            }
+            //thread.Start();
+            //thread.Join();
+            Console.WriteLine("Завершение основного потока");
+            Console.WriteLine("Сумма чисел последовтельности равна {0}", sum);
+            #endregion
             Console.ReadKey();
         }
 
-
+        
         /// <summary>
         /// Метод, вычисляющий факториал числа
         /// </summary>    
@@ -54,8 +79,28 @@ namespace Lesson_5
                         Thread.Sleep(200);
                     }
                    
-                }                 
+                }         
             
+        }
+      
+        /// <summary>
+        /// Метод, вычисляющий сумму последовательности целых чисел
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="sum"></param>
+        static void Sum(ref int number, ref int sum)
+        {
+            sum += number--;
+            Console.WriteLine($"Итерация выполнена в потоке {Thread.CurrentThread.ManagedThreadId}");
+            Thread.Sleep(200);
+            //for (int i = number; i > 0; i--)
+            //{
+            //    sum += i;
+            //    Console.WriteLine($"Итерация {number - i} выполнена в потоке {Thread.CurrentThread.ManagedThreadId}");
+            //    //Thread.Sleep(200);
+            //    //Thread.CurrentThread.Interrupt();
+            //}
+            return;
         }
     }
 }
