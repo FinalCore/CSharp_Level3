@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleProject", "TestC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_6", "Lesson_6\Lesson_6.csproj", "{5153797B-EAB1-44A7-B64C-B6270D5A6D9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncWPFTest", "AsyncWPFTest\AsyncWPFTest.csproj", "{CCCAE333-ED36-4167-8BBD-5E280658A8E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{5153797B-EAB1-44A7-B64C-B6270D5A6D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5153797B-EAB1-44A7-B64C-B6270D5A6D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5153797B-EAB1-44A7-B64C-B6270D5A6D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCAE333-ED36-4167-8BBD-5E280658A8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCAE333-ED36-4167-8BBD-5E280658A8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCAE333-ED36-4167-8BBD-5E280658A8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCAE333-ED36-4167-8BBD-5E280658A8E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
